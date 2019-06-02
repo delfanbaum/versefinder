@@ -3,7 +3,13 @@ var submit = document.getElementById("manualAddText");
 submit.onclick = function() {
   var test = "no, no";
   var button = document.createElement("p");
-  button.innerHTML = 'no';
+  var value = document.getElementById("manualText").value;
+  if(value != ""){
+    button.innerHTML = value;
+  }
+  else {
+    button.innerHTML = 'NO'
+  }
   document.getElementById('verseText').appendChild(button)
 
 
