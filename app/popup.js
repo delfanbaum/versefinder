@@ -1,17 +1,12 @@
 var submit = document.getElementById("manualAddText");
 
 submit.onclick = function() {
-  var test = "no, no";
-  var button = document.createElement("p");
   var value = document.getElementById("manualText").value;
-  if(value != ""){
-    button.innerHTML = value;
-  }
-  else {
-    button.innerHTML = 'NO'
-  }
-  document.getElementById('verseText').appendChild(button)
+  var textField = document.getElementById('verseTextField');
+  textField.innerHTML = value;
 
+  //clear text field
+  document.getElementById("manualText").value = "";
 
 };
 
