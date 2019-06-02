@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="jquery-4.3.1.min.js"></script>
+
     <style>
-        #appframe {
-            min-width: 400px;
-            min-height: 800px;
+        body{
+          min-width: 400px;
+          min-height: 400px;
         }
-    button {
-        height: 50px;
-        width: 50px;
-        outline: none;
-      }
     </style>
   </head>
   <body>
-    <div id="appframe">
-        <p>Select some text on the page then click this button</p>
-        <button id="changeColor"></button>
-    </div>
-
+      <h1 style="font-size:16px;text-align:center;padding:20px;">Find and make verse on the Internet!</h1>
+      <div id="verseTextContainer">
+          <span id="verseText"></span>
+          <!-- IDEA: This is where the stuff goes -->
+      </div>
+      <div style="textalign:center; padding:20px 0" id="workingPlaceholders">
+        <div id="sampleAdd">
+            <input id="manualText" type="text">
+            <input id="manualAddText" type="submit" value="Add Text"/>
+        </div>
+        <button type="button" name="button">Reset</button>
+      </div>
     <script src="popup.js"></script>
   </body>
 </html>
