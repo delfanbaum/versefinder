@@ -6,24 +6,53 @@
         body{
           min-width: 400px;
           min-height: 400px;
+          background: #efefef;
+
+        }
+        button{
+            padding:10px;
+            border:0px solid #666;
+            border-radius: 5px;
+            margin:10px 0;
+            font-family: 'Crimson Text', serif;
+            font-size: 20px;
+        }
+        #sampleText {
+            margin: 20px auto;
+            max-width: 50%;
+        }
+        .lineBreak {
+            color:#fff;
+            border: none;
+            padding:0 5px;;
+        }
+        .lineBreak:hover{
+            color:red;
+        }
+        .erased{
+            color:#d9d9d9;
+            border-color:#efefef;
         }
     </style>
   </head>
   <body>
       <h1 style="font-size:16px;text-align:center;padding:20px;">Find and make verse on the Internet!</h1>
+
       <div id="verseTextContainer">
         <p id="verseTextField"></p>
-
-          <p id="verseText"></p>
           <!-- IDEA: This is where the stuff goes -->
+      </div>
+      <div id="appframe">
+          <p id="thetext"></p>
       </div>
       <div style="textalign:center; padding:20px 0" id="workingPlaceholders">
         <div id="sampleAdd">
             <input id="manualText" type="text">
             <input id="manualAddText" type="submit" value="Add Text"/>
         </div>
-        <button type="button" name="button">Reset</button>
+        <button id="go">Make a poem!</button>
       </div>
     <script src="popup.js"></script>
+    <script src="poemlogic.js"></script>
   </body>
 </html>

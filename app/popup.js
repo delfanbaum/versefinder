@@ -31,6 +31,8 @@ submit.onclick = function() {
     var textField = document.getElementById('verseTextField');
     textField.innerHTML = newText;
 
+    //
+
     //clear text field
     document.getElementById("manualText").value = '';
 
