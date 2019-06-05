@@ -1,5 +1,5 @@
 // basically I need to remove all inline script functions because Chrome.
-// TODO.
+// TODO. Probably need to re-write this from scratch.
 
 function getSelectionText() {
     var text = "";
@@ -24,12 +24,13 @@ function addLineBreak(position) {
 }
 
 function toggleWord(word){
-    console.log("toggleWord clicked!")
-    if (word.hasAttribute('class')) {
-            word.removeAttribute('class');
+    console.log("toggleWord " + word + " clicked!")
+    wordelement = document.getElementById(word);
+    if (wordelement.hasAttribute('class')) {
+            wordelement.removeAttribute('class');
         }
     else {
-        word.setAttribute('class', 'erased')
+        wordelement.setAttribute('class', 'erased')
     }
 }
 
@@ -45,7 +46,8 @@ function textToButtons(text) {
             var button = document.createElement("button");
             button.innerHTML = text[i];
             button.setAttribute('id',("word" + i));
-            button.setAttribute('onclick', ('toggleWord('+("word" + i)+')'));
+            //button.setAttribute('onclick', ('toggleWord('+("word" + i)+')'));
+
 
             // create the line-break option
             var lineBreak = document.createElement("button");
@@ -57,11 +59,19 @@ function textToButtons(text) {
             // 2. Append somewhere
             document.getElementById("thetext").appendChild(button);
             document.getElementById("thetext").appendChild(lineBreak);
-            // 3. Add event handler
-            button.addEventListener ("click", function() {
-              console.log("the number of this is" + i)
-            });
+
+
+
     }}
+
+}
+
+function addListeners(text) {
+  for (i = 0; i < text.length; i++) {
+    // add onclick
+    document.getElementById("word" + i).addEventListener(("click " + i), toggleWord("word" + i));
+    console.log("added listener" + " " + i)
+  }
 }
 
 function run() {
@@ -75,6 +85,8 @@ gobutton = document.getElementById('go');
 
 gobutton.onclick = function() {
   text = document.getElementById('verseTextField').innerText;
+  text = text.split(' ')
   poemfield = document.getElementById('thetext');
-  textToButtons(text.split(" "))
+  textToButtons(text);
+  addListeners(text);
 }
