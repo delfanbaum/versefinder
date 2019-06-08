@@ -23,16 +23,6 @@ function addLineBreak(position) {
 
 };
 
-function toggleWord(word){
-    console.log("toggleWord " + word + " clicked!")
-    wordelement = document.getElementById(word);
-    if (wordelement.hasAttribute('class')) {
-            wordelement.removeAttribute('class');
-        }
-    else {
-        wordelement.setAttribute('class', 'erased')
-    }
-};
 
 function textToButtons(text) {
     var i;
@@ -66,17 +56,25 @@ function textToButtons(text) {
 
 };
 
-function addListeners(text) {
-
-  for (i = 0; i < text.length; i++) {
-    // add onclick
-    document.getElementById("word" + i).addEventListener("click", function(){
-      console.log("click on button "+ i + " !");
-      toggleWord("word" + i);
-    });
-
-  }
+function addListeners(text) { // text now refers to containing parentNode
+  //console.log(text)
+  text.addEventListener("click", function(button){
+    if (button.target && button.target.nodeName == "BUTTON") {
+      console.log("button click on " + button.target.id + "!");
+      toggle(button.target.id)
+    }
+  });
 };
+
+function toggle(elementID){
+  var element = document.getElementById(elementID);
+  if (element.classList.contains("toggle")){
+    element.classList.remove("toggle");
+  } else {
+    element.classList.add("toggle");
+  }
+}
+
 
 function textToButtonsNew(text){
  for (var i = 0; i < text.length; i++) {
@@ -105,7 +103,7 @@ gobutton.onclick = function() {
   poemfield = document.getElementById('thetext');
   hideText();
   textToButtonsNew(text);
-  //addListeners(poemfield);
+  addListeners(poemfield);
 
 };
 

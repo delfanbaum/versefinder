@@ -20,8 +20,10 @@
       "48": "images/vf-logo64.png",
       "128": "images/vf-logo128.png"
     },
-    "background" : {
-      "scripts" : ["eventPage.js"],
-      "persistent" : false
-    }
+  "background" : {
+    "scripts" : ["eventPage.js"],
+    "persistent" : false
+  },
+  
+
 }
