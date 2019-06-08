@@ -14,14 +14,14 @@ submit.onclick = function() {
 
   chrome.storage.sync.get('text', function(verseText){
     var newText = '';
-    if (verseText === 'string'){
+    if (typeof verseText === 'string'){
       newText += String(verseText);
     };
 
     var inputText = document.getElementById("manualText").value;
 
     if (inputText){
-      newText += String(inputText);
+      newText = newText + inputText;
     };
 
 

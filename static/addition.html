@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p id="addition">starter</p>
+    <input id="text" name="adding" value=""></input>
+    <button id="add" onclick="add()" type="submit" value="add">Add</button>
+
+<script type="text/javascript">
+  function add() {
+    var newText = '';
+    var inputText = document.getElementById("text").value;
+    var textField = document.getElementById('addition');
+
+    if (textField.innerHTML != ''){
+      newText = textField.innerHTML;
+    }
+
+    if (inputText != ''){
+      if (inputText[0] != ' '){
+        newText += ' ' + inputText;
+      } else {
+        newText += inputText;
+      }
+    }
+
+    textField.innerHTML = newText;
+
+  }
+</script>
+
+  </body>
+</html>
