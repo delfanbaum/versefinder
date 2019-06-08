@@ -11,7 +11,7 @@ function getSelectionText() {
       text = document.getElementById('verseTextField').innerText;
     }
     return text;
-}
+};
 
 function addLineBreak(position) {
     console.log("Line break go!")
@@ -21,7 +21,7 @@ function addLineBreak(position) {
     //lineBreakTag.setAttribute('class', 'lineBroken')
     //lineBreakTag.setAttribute('onclick', 'unbreakline()')
 
-}
+};
 
 function toggleWord(word){
     console.log("toggleWord " + word + " clicked!")
@@ -32,7 +32,7 @@ function toggleWord(word){
     else {
         wordelement.setAttribute('class', 'erased')
     }
-}
+};
 
 function textToButtons(text) {
     var i;
@@ -64,22 +64,38 @@ function textToButtons(text) {
 
     }}
 
-}
+};
 
 function addListeners(text) {
+
   for (i = 0; i < text.length; i++) {
     // add onclick
-    document.getElementById("word" + i).addEventListener(("click " + i), toggleWord("word" + i));
-    console.log("added listener" + " " + i)
-  }
-}
+    document.getElementById("word" + i).addEventListener("click", function(){
+      console.log("click on button "+ i + " !");
+      toggleWord("word" + i);
+    });
 
-function run() {
-    var a, b;
-    a = getSelectionText()
-    b = a.split(" ")
-    textToButtons(b)
-}
+  }
+};
+
+function textToButtonsNew(text){
+ for (var i = 0; i < text.length; i++) {
+     if (text[i] === "") {
+         console.log("This is a space!")
+     }
+     else {
+         console.log(text[i]);
+         // 1. Create the button
+         var button = document.createElement("button");
+         button.innerHTML = text[i];
+         button.setAttribute('id',("word" + i));
+         //button.setAttribute('onclick', ('toggleWord('+("word" + i)+')'));
+
+         document.getElementById("thetext").appendChild(button);
+
+       }
+     }
+};
 
 gobutton = document.getElementById('go');
 
@@ -88,12 +104,12 @@ gobutton.onclick = function() {
   text = text.split(' ')
   poemfield = document.getElementById('thetext');
   hideText();
-  textToButtons(text);
-  addListeners(text);
+  textToButtonsNew(text);
+  //addListeners(poemfield);
 
-}
+};
 
 function hideText(){
   savedText = document.getElementById('verseTextField');
   savedText.parentNode.removeChild(savedText);
-}
+};
