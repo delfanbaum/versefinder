@@ -8,6 +8,14 @@ function getSelectionText() {
     return text;
 }
 
+function getSelectionLocation() {
+  var text = "";
+  if (window.getSelection) {
+      text = window.getSelection()
+  }
+  return text;
+}
+
 function unbreakline()  {
     // do something
 }
@@ -69,4 +77,21 @@ function run() {
     a = getSelectionText()
     b = a.split(" ")
     textToButtons(b)
+}
+
+
+// new erase tester
+
+var eraseButton = document.getElementById('eraseSelection');
+
+eraseButton.onclick = function() {
+  var text = getSelectionLocation();
+  console.log(text);
+  var pagetext = document.getElementById('loremtext').textContent;
+  console.log(pagetext);
+  var start = parseInt(text.anchorOffset);
+  var end = parseInt(text.focusOffset);
+  console.log(pagetext.slice(start,end));
+  var selection = pagetext.slice(start,end);
+  pagetext.replace(selection,('<span class="erased2">'+selection+'</span>'))
 }

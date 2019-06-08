@@ -7,7 +7,7 @@
     <style>
         body{
             background: #efefef;
-            
+
         }
         #appframe{
             margin:50px auto 0;
@@ -15,7 +15,7 @@
             background:#fff;
             border: 1px solid #666;
             padding:30px;
-            
+
         }
         #go {
             margin:20px auto;
@@ -48,18 +48,33 @@
         .lineBroken::after {
             content: 'HI'
         }
+        hr {
+          margin:100px auto;
+          width:80%;
+        }
+        .lorem {
+          margin:50px auto 0;
+          width: 800px;
+        }
     </style>
   <body>
+    <p class="lorem" id="loremtext">IN the year 1878 I took my degree of Doctor of Medicine of the University of London, and proceeded to Netley to go through the course prescribed for surgeons in the army. Having completed my studies there, I was duly attached to the Fifth Northumberland Fusiliers as Assistant Surgeon. The regiment was stationed in India at the time, and before I could join it, the second Afghan war had broken out. On landing at Bombay, I learned that my corps had advanced through the passes, and was already deep in the enemy’s country. I followed, however, with many other officers who were in the same situation as myself, and succeeded in reaching Candahar in safety, where I found my regiment, and at once entered upon my new duties.</p>
+    <p class="lorem">
+      <button id="eraseSelection">Erase Selected Text</button>
+      <br />
+      <a href="https://www.gutenberg.org/files/244/244-h/244-h.htm#link2HCH0001">source</a>
+    </p>
+    <hr />
     <p id="sampleText">Select some text on the page then click the button below. <br /><br />For example, this is going to be more text that won't mean or matter or anything else. But birdcalls and sing-song and everything is just great, like brownies.<br />This validation is all the sweeter for Mr. Koons, whose career trajectory has been contradictory, controversial and uneven. In 2017, slowing demand for some of his more recent works necessitated a major downsizing of his studio. Auction prices for his most valuable sculptures have also slumped. Since 2014, the most recent spike in sales of contemporary art, the highest price paid for a Koons sculpture at auction was $22.8 million, for the colored aluminum sculpture “Play Doh,” according to the Artnet database of salesroom prices.</p>
     <div id="appframe">
-        
+
         <p id="thetext"></p>
     </div>
       <button id="go" onclick="run()">GO!</button>
-    
-      
-      
-      
+
+
+
+
         <script src="tester.js"></script>
   </body>
 </html>
