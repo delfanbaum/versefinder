@@ -23,7 +23,5 @@
   "background" : {
     "scripts" : ["eventPage.js"],
     "persistent" : false
-  },
-  
-
+  }
 }
