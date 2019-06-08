@@ -13,53 +13,23 @@ function getSelectionText() {
     return text;
 };
 
-function addLineBreak(position) {
-    console.log("Line break go!")
+function addLineBreak(lineBreakID) {
+    console.log("Line break go!");
+    console.log(lineBreakID);
+    position = document.getElementById(lineBreakID);
     var lineBreakTag = document.createElement("br");
     position.parentNode.insertBefore(lineBreakTag, position.nextSibling);
     position.parentNode.removeChild(position);
-    //lineBreakTag.setAttribute('class', 'lineBroken')
-    //lineBreakTag.setAttribute('onclick', 'unbreakline()')
-
-};
-
-
-function textToButtons(text) {
-    var i;
-    for (i = 0; i < text.length; i++) {
-        if (text[i] === "") {
-            console.log("This is a space!")
-        }
-        else {
-            console.log(text[i]);
-            // 1. Create the button
-            var button = document.createElement("button");
-            button.innerHTML = text[i];
-            button.setAttribute('id',("word" + i));
-            //button.setAttribute('onclick', ('toggleWord('+("word" + i)+')'));
-
-
-            // create the line-break option
-            var lineBreak = document.createElement("button");
-            lineBreak.setAttribute('class', 'lineBreak');
-            lineBreak.setAttribute('id',("lineBreak" + i));
-            lineBreak.setAttribute('onclick', ('addLineBreak('+("lineBreak" + i)+')'));
-            lineBreak.innerHTML = " / "
-
-            // 2. Append somewhere
-            document.getElementById("thetext").appendChild(button);
-            document.getElementById("thetext").appendChild(lineBreak);
-
-
-
-    }}
 
 };
 
 function addListeners(text) { // text now refers to containing parentNode
   //console.log(text)
-  text.addEventListener("click", function(button){
-    if (button.target && button.target.nodeName == "BUTTON") {
+  text.addEventListener("click", function(button) {
+    if (button.target && button.target.nodeName == 'A') {
+      console.log("line break at " + button.target.id + "!");
+      addLineBreak(button.target.id);
+    } else if (button.target && button.target.nodeName == "BUTTON") {
       console.log("button click on " + button.target.id + "!");
       toggle(button.target.id)
     }
@@ -73,23 +43,30 @@ function toggle(elementID){
   } else {
     element.classList.add("toggle");
   }
-}
+};
 
-
-function textToButtonsNew(text){
+function textToButtons(text){
  for (var i = 0; i < text.length; i++) {
      if (text[i] === "") {
          console.log("This is a space!")
      }
      else {
          console.log(text[i]);
-         // 1. Create the button
+         // texts to button
          var button = document.createElement("button");
          button.innerHTML = text[i];
          button.setAttribute('id',("word" + i));
-         //button.setAttribute('onclick', ('toggleWord('+("word" + i)+')'));
 
+        // add line break button
+        var lineBreak = document.createElement("a");
+        lineBreak.setAttribute('class', 'lineBreak');
+        lineBreak.setAttribute('id',("lineBreak" + i));
+        lineBreak.setAttribute('href', '#');
+        lineBreak.innerHTML = " / "
+
+         // add to doc
          document.getElementById("thetext").appendChild(button);
+         document.getElementById("thetext").appendChild(lineBreak);
 
        }
      }
@@ -102,7 +79,7 @@ gobutton.onclick = function() {
   text = text.split(' ')
   poemfield = document.getElementById('thetext');
   hideText();
-  textToButtonsNew(text);
+  textToButtons(text);
   addListeners(poemfield);
 
 };
