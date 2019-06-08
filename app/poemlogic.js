@@ -50,7 +50,7 @@ function textToButtons(text){
      if (text[i] === "") {
          console.log("This is a space!")
      }
-     else {
+     else if (i < (text.length - 1)){
          console.log(text[i]);
          // texts to button
          var button = document.createElement("button");
@@ -69,7 +69,17 @@ function textToButtons(text){
          document.getElementById("thetext").appendChild(lineBreak);
 
        }
+     else {
+       console.log('last word: ' + text[i]);
+       // texts to button
+       var button = document.createElement("button");
+       button.innerHTML = text[i];
+       button.setAttribute('id',("word" + i));
+
+       // add to doc
+       document.getElementById("thetext").appendChild(button);
      }
+  }
 };
 
 gobutton = document.getElementById('go');
