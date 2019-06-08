@@ -87,6 +87,13 @@ gobutton.onclick = function() {
   text = document.getElementById('verseTextField').innerText;
   text = text.split(' ')
   poemfield = document.getElementById('thetext');
+  hideText();
   textToButtons(text);
   addListeners(text);
+
+}
+
+function hideText(){
+  savedText = document.getElementById('verseTextField');
+  savedText.parentNode.removeChild(savedText);
 }
