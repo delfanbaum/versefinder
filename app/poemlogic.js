@@ -85,12 +85,17 @@ function textToButtons(text){
 gobutton = document.getElementById('go');
 
 gobutton.onclick = function() {
-  text = document.getElementById('verseTextField').innerText;
-  text = text.split(' ')
+  textsContainer = document.getElementById('verseTextField');
+  for (var i = 0; i < textsContainer.getElementsByClassName("verseText").length; i++){
+    var text = textsContainer.getElementsByClassName("verseText")[i].innerHTML;
+    splitText = text.split(' ')
+    textToButtons(splitText);
+  }
+
+
   poemfield = document.getElementById('thetext');
-  hideText();
-  textToButtons(text);
   addListeners(poemfield);
+  //hideText();
 
 };
 
