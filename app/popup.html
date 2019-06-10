@@ -16,12 +16,16 @@
             color:#d9d9d9;
             background: #000;
         }
-        #go {
+        .actionButton {
           border:1px solid #666;
           border-radius: 5px;
           padding: 10px;
           margin: 30px auto 0;
-          display: block;
+          display: inline;
+          
+        }
+        #sampleAdd {
+          display:none;
         }
     </style>
   </head>
@@ -39,9 +43,9 @@
         <div id="sampleAdd">
             <input id="manualText" type="text">
             <input id="manualAddText" type="submit" value="Add Text"/>
-            <input type="submit" id="resetStorage" value="Reset">
         </div>
-        <button id="go">Make a poem!</button>
+        <button id="go" class="actionButton">Make a poem!</button>
+        <input type="submit" id="resetStorage" value="Clear Text" class="actionButton">
       </div>
 
     <script src="popup.js"></script>

@@ -1,5 +1,5 @@
 var contextMenuItem = {
-    "id" : "addText",
+    "id" : "addTextFromSelection",
     "title" : "Add Selection",
     "contexts" : ["selection"]
 };
@@ -7,8 +7,11 @@ var contextMenuItem = {
 chrome.contextMenus.create(contextMenuItem);
 
 chrome.contextMenus.onClicked.addListener(function(clickData){
-   if (clickData.menuItemId == "addText" && clickData.selectionText){
+   if (clickData.menuItemId == "addTextFromSelection" && clickData.selectionText){
      chrome.storage.sync.get('text', function(verseText){
+       // get url
+       var selectionSourceUrl = clickData.pageUrl;
+       // other stuff
        var newText = '';
 
        console.log(newText + " 0")
@@ -19,7 +22,7 @@ chrome.contextMenus.onClicked.addListener(function(clickData){
 
        console.log(newText + " 1")
 
-       var inputText = clickData.selectionText;
+       var inputText = clickData.selectionText + ' ' + selectionSourceUrl;
 
        if (inputText){
          if (inputText[0] != ' '){
@@ -32,5 +35,10 @@ chrome.contextMenus.onClicked.addListener(function(clickData){
        console.log(newText + " 2")
 
        chrome.storage.sync.set({'text': newText });
+
+
+
+
+
      });
   }});

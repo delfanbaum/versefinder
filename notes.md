@@ -1,13 +1,17 @@
 Verse Finder Notes/Ideas
 ------------------------
 
+## TODO
+- make the 'save' be the div; new texts should create elements within said div
+- figure out how to include "source" information in the pull. 
+
 
 ## Bonus interactions
-- create a slider option for the opacity of the "erased" words, from, say, 0 to 50.
+- create a slider option for the opacity of the "erased" words, from, say, 0 to 50. // options page
 - remove line break! how to?
 - maybe need to figure out how to make a line properly (e.g., paragraphs for lines? Or?)
 --- create a new element that has a line break in it;
-- context menu on select text would be super usefull......
+- context menu on select text would be super usefull... (done)
 
 # Code Scraps
 
