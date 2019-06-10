@@ -9,7 +9,8 @@ chrome.contextMenus.create(contextMenuItem);
 chrome.contextMenus.onClicked.addListener(function(clickData){
    if (clickData.menuItemId == "addTextFromSelection" && clickData.selectionText){
      chrome.storage.sync.get('text', function(verseText){
-       // get url
+       // get text and url
+       var selectionText = clickData.selectionText;
        var selectionSourceUrl = clickData.pageUrl;
        // other stuff
        var newText = '';
@@ -22,16 +23,15 @@ chrome.contextMenus.onClicked.addListener(function(clickData){
 
        console.log(newText + " 1")
 
-       var inputText = clickData.selectionText + ' ' + selectionSourceUrl;
+       var newTextGroup = `
+       <div class="verseTextGroup" id="source-${selectionSourceUrl}">
+         <p class="verseText">${selectionText}</p>
+         <p class="source">${selectionSourceUrl}</p>
+       </div>
+       `
 
-       if (inputText){
-         if (inputText[0] != ' '){
-           newText += ' ' + inputText;
-         } else {
-           newText += inputText;
-         }
-       };
-
+       newText += newTextGroup;
+       
        console.log(newText + " 2")
 
        chrome.storage.sync.set({'text': newText });
