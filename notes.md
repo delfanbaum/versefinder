@@ -2,7 +2,7 @@ Verse Finder Notes/Ideas
 ------------------------
 
 ## TODO
-- update poem logic to scan for each verse group.
+- rewrite textToButtons so that it preserves groups
 
 ## Bonus interactions
 - create a slider option for the opacity of the "erased" words, from, say, 0 to 50. // options page
