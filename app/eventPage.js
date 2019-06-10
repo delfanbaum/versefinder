@@ -1,13 +1,13 @@
 var contextMenuItem = {
     "id" : "addText",
-    "title" : "Text to verse",
+    "title" : "Add Selection",
     "contexts" : ["selection"]
 };
 
 chrome.contextMenus.create(contextMenuItem);
 
 chrome.contextMenus.onClicked.addListener(function(clickData){
-   if (clickData.menuItemId == "spendMoney" && clickData.selectionText){
+   if (clickData.menuItemId == "addText" && clickData.selectionText){
      chrome.storage.sync.get('text', function(verseText){
        var newText = '';
 
@@ -19,7 +19,7 @@ chrome.contextMenus.onClicked.addListener(function(clickData){
 
        console.log(newText + " 1")
 
-       var inputText = document.getElementById("manualText").value;
+       var inputText = clickData.selectionText;
 
        if (inputText){
          if (inputText[0] != ' '){
