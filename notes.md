@@ -2,9 +2,7 @@ Verse Finder Notes/Ideas
 ------------------------
 
 ## TODO
-- make the 'save' be the div; new texts should create elements within said div
-- figure out how to include "source" information in the pull. 
-
+- update poem logic to scan for each verse group.
 
 ## Bonus interactions
 - create a slider option for the opacity of the "erased" words, from, say, 0 to 50. // options page

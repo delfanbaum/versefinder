@@ -96,5 +96,5 @@ gobutton.onclick = function() {
 
 function hideText(){
   savedText = document.getElementById('verseTextField');
-  savedText.parentNode.removeChild(savedText);
+  savedText.setAttribute('class', 'none')
 };

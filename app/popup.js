@@ -52,13 +52,9 @@ submit.onclick = function() {
 var reset = document.getElementById("resetStorage");
 reset.onclick = function() {
   chrome.storage.sync.set({'text': ' ' });
-  /* need to redo these clears; should be 'display none' tags, not clearning out the html
-  
   var textField = document.getElementById('verseTextField');
   var poemField = document.getElementById('thetext');
-  textField.innerHTML = ' ';
-  poemField.innerHTML = '';
-  */
-
+  textField.setAttribute('class', 'none');
+  poemField.setAttribute('class', 'none');
 
 };

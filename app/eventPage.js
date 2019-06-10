@@ -31,13 +31,10 @@ chrome.contextMenus.onClicked.addListener(function(clickData){
        `
 
        newText += newTextGroup;
-       
+
        console.log(newText + " 2")
 
        chrome.storage.sync.set({'text': newText });
-
-
-
 
 
      });
