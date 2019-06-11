@@ -23,6 +23,16 @@ function toggle(elementID){
   }
 };
 
+function addLineBreak(lineBreakID) {
+    console.log("Line break go!");
+    console.log(lineBreakID);
+    position = document.getElementById(lineBreakID);
+    var lineBreakTag = document.createElement("br");
+    position.parentNode.insertBefore(lineBreakTag, position.nextSibling);
+    position.parentNode.removeChild(position);
+
+};
+
 gobutton = document.getElementById('go');
 
 gobutton.onclick = function() {

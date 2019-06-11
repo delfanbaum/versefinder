@@ -1,0 +1,35 @@
+// variables and helpers
+
+
+.none {
+  display:none;
+}
+
+// structure & general layout
+
+body {
+  min-width: 550px; // min width for export later.
+  min-height: 400px;
+}
+
+button { // should refactor/change below.
+
+    border:0;
+    background: #fff;
+}
+
+.actionButton {
+  border:1px solid #666;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 30px auto 0;
+  display: inline;
+}
+
+
+// Poem Logic
+
+.toggle { // "erase" style
+    color:#111;
+    background: #000;
+}
