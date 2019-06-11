@@ -29,10 +29,14 @@ gobutton.onclick = function() {
   var textsContainer = document.getElementById('verseTextField');
   var verseContainers = textsContainer.getElementsByClassName("verseText");
   for (var i = 0; i < verseContainers.length; i++){
-    var text = textsContainer.getElementsByClassName("verseText")[i].innerHTML;
-    textsContainer.getElementsByClassName("verseText")[i].innerHTML = textToErasable(text, i);
-    addListeners(verseContainers[i]);
-    console.log('here')
+    if (verseContainers[i].classList.contains('completed')){ // if it's already been made into buttons
+      console.log("This one's already been turned into buttons!")
+    } else {
+      var text = textsContainer.getElementsByClassName("verseText")[i].innerHTML;
+      textsContainer.getElementsByClassName("verseText")[i].innerHTML = textToErasable(text, i);
+      addListeners(verseContainers[i]);
+      textsContainer.getElementsByClassName("verseText")[i].classList.add('completed');
+    }
   };
 };
 
