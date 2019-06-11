@@ -2,7 +2,8 @@ Verse Finder Notes/Ideas
 ------------------------
 
 ## TODO
-- rewrite textToButtons so that it preserves groups
+- rewrite textToButtons so that it preserves groups (done)
+- screenshot for tweeter: https://stackoverflow.com/questions/4912092/using-html5-canvas-javascript-to-take-in-browser-screenshots
 
 ## Bonus interactions
 - create a slider option for the opacity of the "erased" words, from, say, 0 to 50. // options page

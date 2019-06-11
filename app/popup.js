@@ -6,7 +6,7 @@ function getStoredText(){
 };
 
 window.onload = getStoredText();
-
+/*
 var submit = document.getElementById("manualAddText");
 
 submit.onclick = function() {
@@ -47,14 +47,12 @@ submit.onclick = function() {
 
   });
 
-};
+}; */
 
 var reset = document.getElementById("resetStorage");
 reset.onclick = function() {
   chrome.storage.sync.set({'text': ' ' });
-  var textField = document.getElementById('verseTextField');
-  var poemField = document.getElementById('thetext');
-  textField.setAttribute('class', 'none');
-  poemField.setAttribute('class', 'none');
+  var textField = document.getElementById('verseTextContainer');
+  textField.classList.add('none');
 
 };
