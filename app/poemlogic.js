@@ -1,28 +1,6 @@
 // basically I need to remove all inline script functions because Chrome.
 // TODO. Probably need to re-write this from scratch.
 
-function getSelectionText() {
-    var text = "";
-    if (window.getSelection) {
-        text = window.getSelection().toString();
-    } else if (document.selection && document.selection.type != "Control") {
-        text = document.selection.createRange().text;
-    } else {
-      text = document.getElementById('verseTextField').innerText;
-    }
-    return text;
-};
-
-function addLineBreak(lineBreakID) {
-    console.log("Line break go!");
-    console.log(lineBreakID);
-    position = document.getElementById(lineBreakID);
-    var lineBreakTag = document.createElement("br");
-    position.parentNode.insertBefore(lineBreakTag, position.nextSibling);
-    position.parentNode.removeChild(position);
-
-};
-
 function addListeners(text) { // text now refers to containing parentNode
   //console.log(text)
   text.addEventListener("click", function(button) {
@@ -45,61 +23,28 @@ function toggle(elementID){
   }
 };
 
-function textToButtons(text){
- for (var i = 0; i < text.length; i++) {
-     if (text[i] === "") {
-         console.log("This is a space!")
-     }
-     else if (i < (text.length - 1)){
-         console.log(text[i]);
-         // texts to button
-         var button = document.createElement("button");
-         button.innerHTML = text[i];
-         button.setAttribute('id',("word" + i));
-
-        // add line break button
-        var lineBreak = document.createElement("a");
-        lineBreak.setAttribute('class', 'lineBreak');
-        lineBreak.setAttribute('id',("lineBreak" + i));
-        lineBreak.setAttribute('href', '#');
-        lineBreak.innerHTML = " / "
-
-         // add to doc
-         document.getElementById("thetext").appendChild(button);
-         document.getElementById("thetext").appendChild(lineBreak);
-
-       }
-     else {
-       console.log('last word: ' + text[i]);
-       // texts to button
-       var button = document.createElement("button");
-       button.innerHTML = text[i];
-       button.setAttribute('id',("word" + i));
-
-       // add to doc
-       document.getElementById("thetext").appendChild(button);
-     }
-  }
-};
-
 gobutton = document.getElementById('go');
 
 gobutton.onclick = function() {
-  textsContainer = document.getElementById('verseTextField');
-  for (var i = 0; i < textsContainer.getElementsByClassName("verseText").length; i++){
+  var textsContainer = document.getElementById('verseTextField');
+  var verseContainers = textsContainer.getElementsByClassName("verseText");
+  for (var i = 0; i < verseContainers.length; i++){
     var text = textsContainer.getElementsByClassName("verseText")[i].innerHTML;
-    splitText = text.split(' ')
-    textToButtons(splitText);
-  }
-
-
-  poemfield = document.getElementById('thetext');
-  addListeners(poemfield);
-  //hideText();
-
+    textsContainer.getElementsByClassName("verseText")[i].innerHTML = textToErasable(text, i);
+    addListeners(verseContainers[i]);
+    console.log('here')
+  };
 };
 
-function hideText(){
-  savedText = document.getElementById('verseTextField');
-  savedText.setAttribute('class', 'none')
+function textToErasable(text, groupNumber){ // where 'text' is a string
+  var erasableText = '';
+  var t = text.split(' ');
+  for (var i = 0; i < t.length; i++){
+    var markup = `<button id="g-${groupNumber}-w-${i}">${t[i]}</button>
+    <a class="lineBreak" id="g-${groupNumber}-w-${i}-br" href="#"> / </a>`
+    erasableText += markup;
+    console.log(t[i] + 'through')
+  };
+  console.log(erasableText);
+  return erasableText;
 };
