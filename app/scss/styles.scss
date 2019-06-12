@@ -1,5 +1,6 @@
 // variables and helpers
-
+$background-color: #fff;
+$source-color: #666;
 
 .none {
   display:none;
@@ -10,12 +11,6 @@
 body {
   min-width: 550px; // min width for export later.
   min-height: 400px;
-}
-
-button { // should refactor/change below.
-
-    border:0;
-    background: #fff;
 }
 
 .actionButton {
@@ -32,4 +27,56 @@ button { // should refactor/change below.
 .toggle { // "erase" style
     color:#111;
     background: #000;
+}
+
+#verseTextContainer {
+  width: 85%;
+  margin: 20px auto 0;
+  padding: 5px 10px 0;
+  border: 1px solid #666;
+  border-radius: 10px;
+
+  button {
+    border: none;
+    padding:3px;
+    margin:0;
+    font-size: 16px;
+    &:focus {
+       //background: #efefef;
+       outline: 0;
+     }
+  }
+
+  a.lineBreak{
+    text-decoration:none;
+    color:#fff;
+    margin:0;
+    padding:0;
+    &:hover {
+      color:red;
+    }
+  }
+}
+
+.textSource {
+
+  font-size: 10px;
+
+  a {
+    color: $source-color;
+    text-decoration: none;
+
+    &:hover {
+      border-bottom:1px solid $source-color;
+    }
+    &:visited{
+      color: $source-color;
+    }
+  }
+
+}
+
+#extensionActions {
+  margin: 0 auto;
+  text-align: center;
 }
