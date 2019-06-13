@@ -1,13 +1,15 @@
 function getStoredText(){
-  chrome.storage.local.get(['text', 'poem'],function(verseText){
+  chrome.storage.sync.get(['text', 'poem'],function(verseText){
     if (verseText.poem != ' ') {
       var textField = document.getElementById('verseTextField');
       textField.innerHTML = verseText.poem;
       addListeners(textField);
       listenSaveState();
-    } else {
+    } else if (verseText.text != ' '){
       var textField = document.getElementById('verseTextField');
       textField.innerHTML = verseText.text;
+    } else {
+      textField.innerHTML = '<p>Add text from the web!</p>'
     }
   });
 };
@@ -18,30 +20,30 @@ function listenSaveState(){
   console.log('Listening to save state.')
   var newErasure = document.getElementById('verseTextField');
   newErasure.addEventListener('click', function(){
-    chrome.storage.local.set({'poem': verseTextField.innerHTML });
+    chrome.storage.sync.set({'poem': verseTextField.innerHTML });
   });
 };
 
 var resetPoem = document.getElementById('resetPoem');
 resetPoem.onclick = function() {
-  chrome.storage.local.set({'poem': ' '});
-  chrome.storage.local.get(['text'],function(verseText){
+  chrome.storage.sync.set({'poem': ' '});
+  chrome.storage.sync.get(['text'],function(verseText){
     var textField = document.getElementById('verseTextField');
     textField.innerHTML = verseText.text;
   });
   var poemListen = document.getElementById('verseTextField');
   poemListen.removeEventListener('click', function(){
-    chrome.storage.local.set({'poem': verseTextField.innerHTML });
+    chrome.storage.sync.set({'poem': verseTextField.innerHTML });
   });
   console.log('Stopped listening to save state.')
 };
 
 var resetStorage = document.getElementById("resetStorage");
 resetStorage.onclick = function() {
-  chrome.storage.local.set({'text': ' ' });
-  //chrome.storage.local.set({'poem': ' ' });
-  var textField = document.getElementById('verseTextContainer');
-  textField.classList.add('none');
+  chrome.storage.sync.set({'text': ' ' });
+  chrome.storage.sync.set({'poem': ' ' });
+  var textField = document.getElementById('verseTextField');
+  textField.innerHTML = ' ';
 
 };
 
