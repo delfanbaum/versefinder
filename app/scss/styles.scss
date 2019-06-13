@@ -9,8 +9,7 @@ $source-color: #666;
 // structure & general layout
 
 body {
-  min-width: 550px; // min width for export later.
-  min-height: 400px;
+  font-family: 'Crimson Text', serif;
 }
 
 .actionButton {
@@ -37,6 +36,7 @@ body {
   border-radius: 10px;
 
   button {
+    font-family: 'Crimson Text', serif;
     border: none;
     padding:3px;
     margin:0;
@@ -48,6 +48,7 @@ body {
   }
 
   a.lineBreak{
+    font-family: 'Crimson Text', serif;
     text-decoration:none;
     color:#fff;
     margin:0;
