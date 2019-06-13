@@ -1,6 +1,6 @@
 function getStoredText(){
   chrome.storage.sync.get(['text', 'poem'],function(verseText){
-    if (verseText.poem) {
+    if (verseText.poem != ' ') {
       var textField = document.getElementById('verseTextField');
       textField.innerHTML = verseText.poem;
       addListeners(textField);
@@ -23,7 +23,7 @@ function listenSaveState(){
 
 var resetPoem = document.getElementById('resetPoem');
 resetPoem.onclick = function() {
-  chrome.storage.sync.set({poem: ''});
+  chrome.storage.sync.set({poem: ' '});
   chrome.storage.sync.get(['text'],function(verseText){
     var textField = document.getElementById('verseTextField');
     textField.innerHTML = verseText.text;
@@ -43,7 +43,7 @@ resetStorage.onclick = function() {
 };
 
 function addListeners(text) { // text now refers to containing parentNode
-  //console.log(text)
+  console.log('Listeners have been added to buttons and line breaks.')
   text.addEventListener("click", function(button) {
     if (button.target && button.target.nodeName == 'A') {
       console.log("line break at " + button.target.id + "!");
@@ -58,11 +58,7 @@ function addListeners(text) { // text now refers to containing parentNode
 // does stuff
 
 gobutton = document.getElementById('go');
-gobutton.onclick = runThrough();
-
-
-function runThrough() {
-  console.log('hey')
+gobutton.onclick = function(){
   var textsContainer = document.getElementById('verseTextField');
   var verseContainers = textsContainer.getElementsByClassName("verseText");
   for (var i = 0; i < verseContainers.length; i++){
