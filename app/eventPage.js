@@ -26,7 +26,7 @@ chrome.contextMenus.onClicked.addListener(function(clickData){
        var newTextGroup = `
        <div class="verseTextGroup" id="source-${selectionSourceUrl}">
          <p class="verseText">${selectionText}</p>
-         <p class="textSource">Source: <a href="${selectionSourceUrl}">${selectionSourceUrl}</a></p>
+         <p class="textSource">Source: <a href="${selectionSourceUrl}"  target=”_blank”>${selectionSourceUrl}</a></p>
        </div>
        `
 
