@@ -62,6 +62,7 @@ gobutton.onclick = runThrough();
 
 
 function runThrough() {
+  console.log('hey')
   var textsContainer = document.getElementById('verseTextField');
   var verseContainers = textsContainer.getElementsByClassName("verseText");
   for (var i = 0; i < verseContainers.length; i++){
