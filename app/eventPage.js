@@ -22,7 +22,7 @@ chrome.contextMenus.onClicked.addListener(function(clickData){
       updateText(selectionText, selectionSourceUrl);
     } else if (clickData.menuItemId == 'addTextAndGo'){
       updateText(selectionText, selectionSourceUrl);
-      chrome.storage.sync.set({'poem' : ' '}); // resets poem
+      chrome.storage.local.set({'poem' : ' '}); // resets poem
       window.open('options.html');
     };
   };
@@ -30,7 +30,7 @@ chrome.contextMenus.onClicked.addListener(function(clickData){
 
 
 function updateText(selectionText, selectionSourceUrl){
-  chrome.storage.sync.get('text', function(verseText){
+  chrome.storage.local.get('text', function(verseText){
     var newText = '';
 
     if (verseText){
@@ -45,6 +45,6 @@ function updateText(selectionText, selectionSourceUrl){
     `
     newText += newTextGroup;
     // console.log(newText + " 2")
-    chrome.storage.sync.set({'text': newText });
+    chrome.storage.local.set({'text': newText });
   })
 };
