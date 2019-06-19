@@ -1,3 +1,5 @@
+///import html2canvas from 'html2canvas.min.js';
+
 function getStoredText(){
   chrome.storage.local.get(['text', 'poem'],function(verseText){
     if (verseText.poem != ' ') {
@@ -77,4 +79,25 @@ gobutton.onclick = function(){
     }
   };
   listenSaveState();
+};
+
+// canvas for export ...?
+shareButton = document.getElementById('share');
+poemToShare = document.getElementById('verseTextContainer');
+
+shareButton.onclick = function(){
+  html2canvas(document.querySelector("#verseTextContainer")).then(canvas => {
+    var cover = document.createElement('div');
+    cover.setAttribute('id', 'cover');
+    cover.innerHTML = '&nbsp;';
+    canvas.setAttribute('class','exportImage');
+    instructions = document.createElement('div');
+    instructions.setAttribute('class', 'instructions');
+    instructions.innerHTML = `<p>Right-click the image above and save to share!</p>
+    <p><a href="options.html" id="clearShare">Return to VerseFinder</a></p>`
+    document.body.appendChild(cover);
+    cover.appendChild(canvas);
+    cover.appendChild(instructions);
+
+});
 };
