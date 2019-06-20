@@ -97,7 +97,7 @@ shareButton.onclick = function(){
     canvas.setAttribute('class','exportImage');
     instructions = document.createElement('div');
     instructions.setAttribute('class', 'instructions');
-    instructions.innerHTML = `<p>Right-click the image of your poem and save to share!</p>`
+    instructions.innerHTML = `<p>Right-click the image of your poem and save and share!</p>`
 
     exit = document.createElement('div');
     exit.setAttribute('id', 'exit')
