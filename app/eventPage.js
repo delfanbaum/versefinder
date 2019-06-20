@@ -1,11 +1,11 @@
 var contextMenuItemAddText = {
     "id" : "addTextFromSelection",
-    "title" : "Add Selection",
+    "title" : "Add Text",
     "contexts" : ["selection"]
 };
 var contextMenuItemAddTextAndGo = {
   'id' : 'addTextAndGo',
-  'title' : 'Add Selection and Go',
+  'title' : 'Add Text and Go',
   'contexts' : ['selection']
 }
 
