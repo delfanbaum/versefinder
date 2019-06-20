@@ -22,8 +22,13 @@ function listenSaveState(){
   console.log('Listening to save state.')
   var newErasure = document.getElementById('verseTextField');
   newErasure.addEventListener('click', function(){
-    chrome.storage.local.set({'poem': verseTextField.innerHTML });
+    chrome.storage.local.set({'poem': newErasure.innerHTML });
   });
+  var titleChange = document.getElementById('poemTitle');
+  titleChange.addEventListener('input', function(){
+    console.log('Title change!')
+    chrome.storage.local.set({'poem': newErasure.innerHTML });
+  })
 };
 
 var resetPoem = document.getElementById('resetPoem');
@@ -66,6 +71,7 @@ function addListeners(text) { // text now refers to containing parentNode
 
 gobutton = document.getElementById('go');
 gobutton.onclick = function(){
+  addTitleArea();
   var textsContainer = document.getElementById('verseTextField');
   var verseContainers = textsContainer.getElementsByClassName("verseText");
   for (var i = 0; i < verseContainers.length; i++){

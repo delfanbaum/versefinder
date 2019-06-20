@@ -34,7 +34,7 @@
     font-family: 'Crimson Text', serif;
     font-size: 20px;
     border: none;
-    padding:3px;
+    padding:3px 0;
     margin:0;
     &:focus {
        //background: #efefef;
@@ -48,8 +48,10 @@
     color:#fff;
     margin:0;
     padding:0;
+    //font-size:10px;
     &:hover {
       color:$red;
+      font-size:20px;
     }
   }
 }
@@ -75,4 +77,20 @@
 
 #verseTextField {
   min-height: 30px;
+}
+
+#poemTitle {
+    min-width: 200px;
+    max-width: 400px;
+
+    span {
+        font-size: 25px;
+        padding:0 15px 2px 0;
+        border-bottom:1px dotted $blue;
+        &:focus {
+           outline: 0;
+         }
+
+    }
+
 }

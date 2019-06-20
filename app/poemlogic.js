@@ -30,3 +30,13 @@ function textToErasable(text, groupNumber){ // where 'text' is a string
   //console.log(erasableText);
   return erasableText;
 };
+
+function addTitleArea() {
+  container = document.getElementById('verseTextField');
+
+  var titleField = document.createElement('div');
+  titleField.setAttribute('id', 'poemTitle');
+  titleField.innerHTML = `<span contenteditable="true">Enter a title...</span>`
+
+  container.insertBefore(titleField, container.firstChild);
+}
