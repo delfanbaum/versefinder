@@ -86,6 +86,7 @@ shareButton = document.getElementById('share');
 poemToShare = document.getElementById('verseTextContainer');
 
 shareButton.onclick = function(){
+  addWatermark();
   var cover = document.createElement('div');
   cover.setAttribute('id', 'cover');
   cover.innerHTML = '&nbsp;';
@@ -110,3 +111,13 @@ shareButton.onclick = function(){
 
 });
 };
+
+function addWatermark(){
+  watermark = document.createElement('div');
+  watermark.setAttribute('id', 'watermark');
+  watermark.innerHTML = `<p>Made with<span><strong><em>V</em></strong>ersefinder</span></p>`
+
+  container = document.getElementById('verseTextContainer');
+  container.appendChild(watermark);
+
+}

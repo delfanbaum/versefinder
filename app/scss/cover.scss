@@ -68,8 +68,22 @@
       padding:10px;
       color:$blue;
       line-height: 1;
+
+      &:hover {
+        color:white;
+      }
     }
 
   }
 
+}
+
+#watermark {
+  text-align: center;
+  font-size: 15px;
+  font-family:'Crimson Text', serif;
+  span{
+    color:$blue;
+  }
+  margin-bottom:-15px;
 }
