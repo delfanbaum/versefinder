@@ -1,12 +1,5 @@
-// variables and helpers
-$background-color: #fff;
-$source-color: #666;
-$text-font:  'Crimson Text', serif;
-$text-color: #222;
-$blue: #005A8B;
-$blue-light: #A0CFEB;
-$grey: #988F86;
-$red: #A33F1F;
+@import 'globalVars';
+@import 'cover';
 
 
 .none {
@@ -43,9 +36,13 @@ header{
 
 .poemMaker{
   min-width:800px;
+  position:relative;
+
   header{
     margin:20px 40px 0;
   }
+  max-width: 900px;
+  margin:0 auto;
 }
 
 .toggle { // "erase" style
@@ -57,6 +54,7 @@ header{
   width: 85%;
   max-width: 600px;
   min-width: 400px;
+  float:left;
   margin: 20px 40px 0;
   padding: 30px;
   //border: 1px solid #666;
@@ -67,11 +65,10 @@ header{
 
   button {
     font-family: 'Crimson Text', serif;
-    font-size: 18px;
+    font-size: 20px;
     border: none;
     padding:3px;
     margin:0;
-    font-size: 16px;
     &:focus {
        //background: #efefef;
        outline: 0;
@@ -110,17 +107,28 @@ header{
 
 //frames
 
+#playingField {
+
+}
+
 #extensionActions {
-  margin: 0;
+  margin: 20px 0 0;
   padding:20px 0;
   text-align: center;
-  position: fixed;
-  top:0;
-  right:0;
+  float:left;
   width: 150px;
   color:white;
   border-left:1px solid $blue;
   background: white;
+
+  @media (max-width: 900px){
+    float:none;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    border-left:0;
+    border-top: 1px solid $blue;
+  }
 }
 
 .actionButton {
@@ -135,28 +143,6 @@ header{
 
 #verseTextField {
   min-height: 30px;
-}
-
-// share / cover Logic
-
-#cover {
-  position:fixed;
-  top:0;
-  z-index: 1;
-  width:100%;
-  height:100%;
-  background:#efefef;
-
-  .exportImage {
-    margin:10vh auto 0;
-    display: block;
-  }
-
-  .instructions {
-    text-align: center;
-    font-size:20px;
-  }
-
 }
 
 

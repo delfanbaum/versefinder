@@ -20,6 +20,7 @@ chrome.contextMenus.onClicked.addListener(function(clickData){
 
     if (clickData.menuItemId == 'addTextFromSelection') {
       updateText(selectionText, selectionSourceUrl);
+      chrome.storage.local.set({'poem' : ' '}); // resets poem
     } else if (clickData.menuItemId == 'addTextAndGo'){
       updateText(selectionText, selectionSourceUrl);
       chrome.storage.local.set({'poem' : ' '}); // resets poem
