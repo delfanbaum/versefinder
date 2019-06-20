@@ -71,7 +71,7 @@ function addListeners(text) { // text now refers to containing parentNode
 
 gobutton = document.getElementById('go');
 gobutton.onclick = function(){
-  if (document.getElementById('verseTextField').innerHTML = `<p>Add text from the web to get started.</p>`) {
+  if (document.getElementById('verseTextField').innerHTML === `<p>Add text from the web to get started.</p>`) {
     console.log('Need to add text before start does anything')
     alert('You need to add some text first!')
   } else {
@@ -113,7 +113,7 @@ shareButton.onclick = function(){
     canvas.setAttribute('class','exportImage');
     instructions = document.createElement('div');
     instructions.setAttribute('class', 'instructions');
-    instructions.innerHTML = `<p>Right-click the image of your poem and save and share!</p>`
+    instructions.innerHTML = `<p>Right-click the image of your poem to save and share!</p>`
 
     exit = document.createElement('div');
     exit.setAttribute('id', 'exit')
