@@ -2,8 +2,8 @@
 
 function getStoredText(){
   chrome.storage.local.get(['text', 'poem'],function(verseText){
+    var textField = document.getElementById('verseTextField');
     if (verseText.poem != ' ') {
-      var textField = document.getElementById('verseTextField');
       textField.innerHTML = verseText.poem;
       addListeners(textField);
       listenSaveState();
@@ -11,7 +11,7 @@ function getStoredText(){
       var textField = document.getElementById('verseTextField');
       textField.innerHTML = verseText.text;
     } else {
-      textField.innerHTML = '<p>Add text from the web!</p>'
+      textField.innerHTML = `<p>Add text from the web to get started.</p>`
     }
   });
 };
@@ -50,7 +50,7 @@ resetStorage.onclick = function() {
   chrome.storage.local.set({'text': ' ' });
   chrome.storage.local.set({'poem': ' ' });
   var textField = document.getElementById('verseTextField');
-  textField.innerHTML = ' ';
+  textField.innerHTML = `<p>Add text from the web to get started.</p>`;
 
 };
 
@@ -71,20 +71,29 @@ function addListeners(text) { // text now refers to containing parentNode
 
 gobutton = document.getElementById('go');
 gobutton.onclick = function(){
-  addTitleArea();
-  var textsContainer = document.getElementById('verseTextField');
-  var verseContainers = textsContainer.getElementsByClassName("verseText");
-  for (var i = 0; i < verseContainers.length; i++){
-    if (verseContainers[i].classList.contains('completed')){ // if it's already been made into buttons
-      console.log("This one's already been turned into buttons!")
+  if (document.getElementById('verseTextField').innerHTML = `<p>Add text from the web to get started.</p>`) {
+    console.log('Need to add text before start does anything')
+    alert('You need to add some text first!')
+  } else {
+    if (document.getElementById('poemTitle')) {
+      console.log('Title exists.')
     } else {
-      var text = textsContainer.getElementsByClassName("verseText")[i].innerHTML;
-      textsContainer.getElementsByClassName("verseText")[i].innerHTML = textToErasable(text, i);
-      addListeners(verseContainers[i]);
-      textsContainer.getElementsByClassName("verseText")[i].classList.add('completed');
+      addTitleArea();
     }
-  };
-  listenSaveState();
+    var textsContainer = document.getElementById('verseTextField');
+    var verseContainers = textsContainer.getElementsByClassName("verseText");
+    for (var i = 0; i < verseContainers.length; i++){
+      if (verseContainers[i].classList.contains('completed')){ // if it's already been made into buttons
+        console.log("This one's already been turned into buttons!")
+      } else {
+        var text = textsContainer.getElementsByClassName("verseText")[i].innerHTML;
+        textsContainer.getElementsByClassName("verseText")[i].innerHTML = textToErasable(text, i);
+        addListeners(verseContainers[i]);
+        textsContainer.getElementsByClassName("verseText")[i].classList.add('completed');
+      }
+    };
+    listenSaveState();
+  }
 };
 
 // canvas for export ...?
