@@ -1,0 +1,41 @@
+@import 'globalVars';
+
+/// popup stylesheet
+
+.popup {
+  font-family: $text-font;
+  width:400px;
+  padding:10px 20px;
+  font-size:16px;
+
+ol {
+  margin-left:0;
+  padding:0 20px;
+}
+
+#openPoemMaker{
+
+  a{
+    text-align:center;
+    max-width:150px;
+    display: block;
+    margin:0 auto;
+    padding:10px;
+    border-radius:10px;
+    background:$blue;
+    color:white;
+    text-decoration: none;
+    font-size:18px;
+    line-height:1;
+
+    &:hover{
+      background:$blue-light;
+    }
+  }
+}
+
+/* just for mocking up. rm for prod
+  border: 1px solid $grey;
+  margin: 100px auto;
+*/
+}

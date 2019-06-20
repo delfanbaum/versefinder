@@ -1,0 +1,80 @@
+@import 'globalVars';
+// Poem Logic
+
+.poemMaker{
+  min-width:800px;
+  position:relative;
+
+  header{
+    margin:20px 40px 0;
+  }
+  max-width: 900px;
+  margin:0 auto;
+}
+
+.toggle { // "erase" style
+    color:#111;
+    background: #000;
+}
+
+#verseTextContainer {
+  width: 85%;
+  max-width: 600px;
+  min-width: 400px;
+  float:left;
+  margin: 20px 40px 0;
+  padding: 30px;
+  //border: 1px solid #666;
+  //border-radius: 10px;
+  font-family: 'Crimson Text', serif;
+  font-size: 20px;
+
+
+  button {
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+    border: none;
+    padding:3px;
+    margin:0;
+    &:focus {
+       //background: #efefef;
+       outline: 0;
+     }
+  }
+
+  a.lineBreak{
+    font-family: 'Crimson Text', serif;
+    text-decoration:none;
+    color:#fff;
+    margin:0;
+    padding:0;
+    &:hover {
+      color:$red;
+    }
+  }
+}
+
+.textSource {
+
+  font-size: 11px;
+
+  a {
+    color: $source-color;
+    text-decoration: none;
+
+    &:hover {
+      border-bottom:1px solid $source-color;
+    }
+    &:visited{
+      color: $source-color;
+    }
+  }
+
+}
+
+
+
+
+#verseTextField {
+  min-height: 30px;
+}
