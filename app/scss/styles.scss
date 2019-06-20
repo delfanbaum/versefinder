@@ -18,10 +18,35 @@ $red: #A33F1F;
 body {
   font-family: $text-font;
   color: $text-color;
+  padding:0;
+  margin:0;
+}
+
+// all pages stuff
+
+header{
+  h1{
+    margin:0 0 0 -10px;
+    padding:0;
+    font-size:35px;
+    color:$blue;
+
+    span {
+      font-wight:600;
+      font-style: italic;
+    }
+  }
 }
 
 
 // Poem Logic
+
+.poemMaker{
+  min-width:800px;
+  header{
+    margin:20px 40px 0;
+  }
+}
 
 .toggle { // "erase" style
     color:#111;
@@ -30,15 +55,19 @@ body {
 
 #verseTextContainer {
   width: 85%;
-  max-width: 800px;
-  min-width: 500px;
-  margin: 20px auto 0;
+  max-width: 600px;
+  min-width: 400px;
+  margin: 20px 40px 0;
   padding: 30px;
-  border: 1px solid #666;
-  border-radius: 10px;
+  //border: 1px solid #666;
+  //border-radius: 10px;
+  font-family: 'Crimson Text', serif;
+  font-size: 20px;
+
 
   button {
     font-family: 'Crimson Text', serif;
+    font-size: 18px;
     border: none;
     padding:3px;
     margin:0;
@@ -79,14 +108,19 @@ body {
 
 }
 
+//frames
+
 #extensionActions {
-  margin: 10px auto;
+  margin: 0;
+  padding:20px 0;
   text-align: center;
   position: fixed;
-  bottom:0;
-  width: 100%;
-  background:#fff;
-  border-top:1px solid #efefef;
+  top:0;
+  right:0;
+  width: 150px;
+  color:white;
+  border-left:1px solid $blue;
+  background: white;
 }
 
 .actionButton {
@@ -134,19 +168,7 @@ body {
   padding:10px 20px;
   font-size:16px;
 
-header{
-  h1{
-    margin:0 0 0 -10px;
-    padding:0;
-    font-size:35px;
-    color:$blue;
 
-    span {
-      font-wight:600;
-      font-style: italic;
-    }
-  }
-}
 
 strong{
 
