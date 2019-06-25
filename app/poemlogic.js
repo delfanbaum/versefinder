@@ -55,8 +55,6 @@ var eraseColorPicker = new Huebee( elem, {
 eraseColorPicker.on('change', function( color, hue, sat, lum){
   console.log ('erase color changed to: ' + color)
   var erasures = document.querySelectorAll('.toggle');
-
-
   erasures.forEach(element => {
     element.style.background = color;
   });
