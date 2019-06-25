@@ -40,3 +40,24 @@ function addTitleArea() {
 
   container.insertBefore(titleField, container.firstChild);
 }
+
+// colopricker options
+
+var elem = document.querySelector('.color-input');
+var eraseColorPicker = new Huebee( elem, {
+  // options
+  setText: false,
+  saturations: 2,
+  hues: 6,
+  shades:5,
+  //staticOpen: 'true'
+});
+eraseColorPicker.on('change', function( color, hue, sat, lum){
+  console.log ('erase color changed to: ' + color)
+  var erasures = document.querySelectorAll('.toggle');
+
+
+  erasures.forEach(element => {
+    element.style.background = color;
+  });
+})
