@@ -42,10 +42,24 @@ function addLineBreak(lineBreakID) {
 
 function textToErasable(text, groupNumber){ // where 'text' is a string
   var erasableText = '';
+
+// options
+
   if (document.querySelector('#punctuationSeperator').checked === true){
     console.log('separate punctuation!');
     text = separatePunctuation(text);
-  }
+  };
+  if (document.querySelector('#punctuationRemover').checked == true){
+    console.log('remove punctuation!');
+    text = removePunctuation(text);
+  };
+  if (document.querySelector('#lowercaseToggle').checked == true){
+    console.log('remove punctuation!');
+    text = text.toLowerCase();
+  };
+
+// actual operations
+
   var t = text.split(' ');
   for (var i = 0; i < t.length; i++){
     if (t[i] == ''){
@@ -77,8 +91,21 @@ function separatePunctuation(text) { // I know there is a better way to do this.
   t = t.replace(/[:]/g, ' :')
   t = t.replace(/[!]/g, ' !')
   t = t.replace(/[?]/g, ' ?')
-  t = t.replace(/[\[]/g, ' [')
+  t = t.replace(/[\[]/g, '[ ')
   t = t.replace(/[\]]/g, ' ]')
+  return t
+}
+
+function removePunctuation(text) { // I know there is a better way to do this.
+  var t = text.replace(/[,]/g, '')
+  t = t.replace(/[;]/g, '')
+  t = t.replace(/[.]/g, '')
+  t = t.replace(/["]/g, '')
+  t = t.replace(/[:]/g, '')
+  t = t.replace(/[!]/g, '')
+  t = t.replace(/[?]/g, '')
+  t = t.replace(/[\[]/g, '')
+  t = t.replace(/[\]]/g, '')
   return t
 }
 
