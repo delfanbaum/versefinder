@@ -41,7 +41,18 @@ function addTitleArea() {
   container.insertBefore(titleField, container.firstChild);
 }
 
-// colopricker options
+function separatePunctuation(text) { // I know there is a better way to do this.
+  var t = text.replace(/[,]/g, ' ,')
+  t = t.replace(/[;]/g, ' ;')
+  t = t.replace(/[.]/g, ' .')
+  t = t.replace(/["]/g, ' "')
+  t = t.replace(/[:]/g, ' :')
+  t = t.replace(/[!]/g, ' !')
+  t = t.replace(/[?]/g, ' ?')
+  return t
+}
+
+// colopicker options
 
 var elem = document.querySelector('.color-input');
 var eraseColorPicker = new Huebee( elem, {
@@ -58,4 +69,6 @@ eraseColorPicker.on('change', function( color, hue, sat, lum){
   erasures.forEach(element => {
     element.style.background = color;
   });
+  var button = document.querySelector('.color-picker-button');
+  button.style.background = color;
 })
