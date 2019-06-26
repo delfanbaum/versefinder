@@ -1,7 +1,7 @@
 ///import html2canvas from 'html2canvas.min.js';
 
 function getSaveState(){
-  chrome.storage.local.get(['text', 'poem', 'eraseColor'],function(verseText){
+  chrome.storage.local.get(['text', 'poem', 'eraseColor', 'textColor'],function(verseText){
     var textField = document.getElementById('verseTextField');
     if (verseText.poem != ' ') {
       textField.innerHTML = verseText.poem;
@@ -14,11 +14,20 @@ function getSaveState(){
       textField.innerHTML = `<p>Add text from the web to get started.</p>`
     };
     if (verseText.eraseColor){
-      var style = document.createElement('style');
-      style.innerHTML = `.toggle {background: ${verseText.eraseColor}}
+      console.log('there was an erasure color');
+      var s = document.createElement('style');
+      s.innerHTML = `.toggle {background: ${verseText.eraseColor}}
       .color-picker-button {background: ${verseText.eraseColor}}`;
       var head = document.querySelector('head');
-      head.appendChild(style);
+      head.appendChild(s);
+    }
+    if (verseText.textColor){
+      console.log('there was an erasure text color');
+      var sa = document.createElement('style');
+      sa.innerHTML = `.toggle {color: ${verseText.textColor}}
+      .text-picker-button {background: ${verseText.textColor}}`;
+      var head = document.querySelector('head');
+      head.appendChild(sa);
     }
   });
 };
@@ -50,6 +59,17 @@ resetPoem.onclick = function() {
   poemListen.removeEventListener('click', function(){
     chrome.storage.local.set({'poem': verseTextField.innerHTML });
   });
+  // color clears
+  chrome.storage.local.set({'textColor': 'black' });
+  chrome.storage.local.set({'eraseColor': 'black' });
+  var sa = document.createElement('style');
+  sa.innerHTML = `
+  .toggle {color: #000; background: #000}
+  .color-picker-button {background: #000}
+  .text-picker-button {background: #000}`;
+  var head = document.querySelector('head');
+  head.appendChild(sa);
+
   console.log('Stopped listening to save state.')
 };
 
@@ -57,6 +77,8 @@ var resetStorage = document.getElementById("resetStorage");
 resetStorage.onclick = function() {
   chrome.storage.local.set({'text': ' ' });
   chrome.storage.local.set({'poem': ' ' });
+  chrome.storage.local.set({'textColor': 'black' });
+  chrome.storage.local.set({'eraseColor': 'black' });
   var textField = document.getElementById('verseTextField');
   textField.innerHTML = `<p>Add text from the web to get started.</p>`;
 

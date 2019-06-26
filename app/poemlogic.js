@@ -54,7 +54,7 @@ function separatePunctuation(text) { // I know there is a better way to do this.
 
 // colopicker options
 
-var elem = document.querySelector('.color-input');
+var elem = document.querySelector('.color-picker-button');
 var eraseColorPicker = new Huebee( elem, {
   // options
   setText: false,
@@ -64,17 +64,6 @@ var eraseColorPicker = new Huebee( elem, {
   //staticOpen: 'true'
 });
 
-function setColorPicker() {
-  if (document.querySelector('#toggle')){
-    //eraseColorPicker.setColor(oldColor.style.background);
-    console.log('old color')
-  } else {
-    //eraseColorPicker.setColor('black')
-    console.log('fresh shit')
-  }
-};
-
-
 eraseColorPicker.on('change', function( color, hue, sat, lum){
   console.log ('erase color changed to: ' + color)
 // this is probably a shitty way to do this, but --
@@ -83,11 +72,33 @@ eraseColorPicker.on('change', function( color, hue, sat, lum){
     var head = document.querySelector('head');
     head.appendChild(style);
 
-// change button color
-  var button = document.querySelector('.color-picker-button');
-  button.style.background = color;
 
 // save state
   chrome.storage.local.set({'eraseColor': color});
 
+})
+
+// this could be condensed with above, but for now:
+
+var elem = document.querySelector('.text-picker-button');
+var textColorPicker = new Huebee( elem, {
+  // options
+  setText: false,
+  saturations: 2,
+  hues: 6,
+  shades:5,
+  //staticOpen: 'true'
+});
+
+textColorPicker.on('change', function( color, hue, sat, lum){
+  console.log ('text color changed to: ' + color)
+// this is probably a shitty way to do this, but --
+    var style = document.createElement('style');
+    style.innerHTML = `.toggle {color: ${color}}`;
+    var head = document.querySelector('head');
+    head.appendChild(style);
+
+// save state
+  chrome.storage.local.set({'textColor': color});
+  console.log('storage set');
 })

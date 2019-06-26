@@ -65,4 +65,9 @@
 .color-picker-button {
   background: #000;
   width: 30px;
+  margin: 0 0 13px;
+}
+
+.text-picker-button {
+  @extend .color-picker-button;
 }
