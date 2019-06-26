@@ -20,14 +20,20 @@ function addLineBreak(lineBreakID) {
 
 function textToErasable(text, groupNumber){ // where 'text' is a string
   var erasableText = '';
+  if (document.querySelector('#punctuationSeperator').checked = true){
+    console.log('separate punctuation!');
+    text = separatePunctuation(text);
+  }
   var t = text.split(' ');
   for (var i = 0; i < t.length; i++){
-    var markup = `<button id="g-${groupNumber}-w-${i}">${t[i]}</button>
-    <a class="lineBreak" id="g-${groupNumber}-w-${i}-br" href="#"> / </a>`
-    erasableText += markup;
-    //console.log(t[i] + 'through')
+    if (t[i] == ''){
+      console.log('We have got a space! No new button.')
+    } else {
+      var markup = `<button id="g-${groupNumber}-w-${i}">${t[i]}</button>
+      <a class="lineBreak" id="g-${groupNumber}-w-${i}-br" href="#"> / </a>`
+      erasableText += markup;
+    }
   };
-  //console.log(erasableText);
   return erasableText;
 };
 
@@ -45,10 +51,12 @@ function separatePunctuation(text) { // I know there is a better way to do this.
   var t = text.replace(/[,]/g, ' ,')
   t = t.replace(/[;]/g, ' ;')
   t = t.replace(/[.]/g, ' .')
-  t = t.replace(/["]/g, ' "')
+  t = t.replace(/["]/g, ' " ')
   t = t.replace(/[:]/g, ' :')
   t = t.replace(/[!]/g, ' !')
   t = t.replace(/[?]/g, ' ?')
+  t = t.replace(/[\[]/g, ' [')
+  t = t.replace(/[\]]/g, ' ]')
   return t
 }
 
