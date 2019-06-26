@@ -30,6 +30,25 @@ function getSaveState(){
       head.appendChild(sa);
     }
   });
+  // wait
+  setTimeout(function(){
+    var unbreaks = document.querySelectorAll('.unbreakContainer');
+    if (unbreaks) {
+      for (var u = 0; u < unbreaks.length; u++) {
+        var e = unbreaks[u].id.slice(1,);
+        console.log(e)
+        unbreaks[u].addEventListener('click', function(){
+            var a = event.currentTarget.id;
+            var b =  a.slice(1,);
+            var c = document.getElementById(b);
+            document.getElementById(a).outerHTML = "";
+            c.setAttribute('class', 'lineBreak');
+          });
+        console.log('undo line break listener added');
+      }
+    };
+  }, 100);
+
 };
 
 

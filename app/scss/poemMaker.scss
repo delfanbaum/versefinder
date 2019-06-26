@@ -53,7 +53,22 @@
       color:$red;
       font-size:20px;
     }
+    &:visited {
+      text-decoration: none;
+
+    }
   }
+}
+
+.unbreak{
+  margin-left: -20px;
+  .strokes { // line info
+    stroke:#fff;stroke-miterlimit:10;
+  }
+  &:hover {
+    .strokes{stroke:$red;}
+  }
+
 }
 
 .textSource {

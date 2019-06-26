@@ -12,10 +12,32 @@ function addLineBreak(lineBreakID) {
     console.log("Line break go!");
     console.log(lineBreakID);
     position = document.getElementById(lineBreakID);
-    var lineBreakTag = document.createElement("br");
+    position.setAttribute('class', 'none')
+    var lineBreakTag = document.createElement("span");
+    lineBreakTag.setAttribute('class', 'unbreakContainer')
+    lineBreakTag.setAttribute('id', 'u'+lineBreakID)
+    lineBreakTag.innerHTML = `<br />
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        	 viewBox="0 0 20 20" class="unbreak" style="width:20px; height:20px;" xml:space="preserve">
+        <style type="text/css">
+        	.st0{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+        	.st1{fill:none;stroke:#000000;stroke-miterlimit:10;}
+        </style>
+        <g>
+        	<path class="st0 strokes" d="M5.5,3.8c0,0,0-6.1,0,4.9c0,9.7,7.5,9.9,8.7,9.8c0.1,0,4.5,0,4.5,0"/>
+        	<polyline class="st1 strokes" points="9.9,5.6 5.5,2 1.1,5.6 	"/>
+        </g>
+        </svg>`
+    console.log('add undo');
     position.parentNode.insertBefore(lineBreakTag, position.nextSibling);
-    position.parentNode.removeChild(position);
 
+
+    lineBreakTag.addEventListener('click', function(){
+      console.log('clicked on un-line break')
+      position.parentNode.removeChild(lineBreakTag);
+      position.setAttribute('class', 'lineBreak');
+  });
+    console.log('undo line break listener added');
 };
 
 function textToErasable(text, groupNumber){ // where 'text' is a string
