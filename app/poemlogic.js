@@ -63,12 +63,31 @@ var eraseColorPicker = new Huebee( elem, {
   shades:5,
   //staticOpen: 'true'
 });
+
+function setColorPicker() {
+  if (document.querySelector('#toggle')){
+    //eraseColorPicker.setColor(oldColor.style.background);
+    console.log('old color')
+  } else {
+    //eraseColorPicker.setColor('black')
+    console.log('fresh shit')
+  }
+};
+
+
 eraseColorPicker.on('change', function( color, hue, sat, lum){
   console.log ('erase color changed to: ' + color)
-  var erasures = document.querySelectorAll('.toggle');
-  erasures.forEach(element => {
-    element.style.background = color;
-  });
+// this is probably a shitty way to do this, but --
+    var style = document.createElement('style');
+    style.innerHTML = `.toggle {background: ${color}}`;
+    var head = document.querySelector('head');
+    head.appendChild(style);
+
+// change button color
   var button = document.querySelector('.color-picker-button');
   button.style.background = color;
+
+// save state
+  chrome.storage.local.set({'eraseColor': color});
+
 })

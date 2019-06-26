@@ -1,7 +1,7 @@
 ///import html2canvas from 'html2canvas.min.js';
 
-function getStoredText(){
-  chrome.storage.local.get(['text', 'poem'],function(verseText){
+function getSaveState(){
+  chrome.storage.local.get(['text', 'poem', 'eraseColor'],function(verseText){
     var textField = document.getElementById('verseTextField');
     if (verseText.poem != ' ') {
       textField.innerHTML = verseText.poem;
@@ -12,11 +12,19 @@ function getStoredText(){
       textField.innerHTML = verseText.text;
     } else {
       textField.innerHTML = `<p>Add text from the web to get started.</p>`
+    };
+    if (verseText.eraseColor){
+      var style = document.createElement('style');
+      style.innerHTML = `.toggle {background: ${verseText.eraseColor}}
+      .color-picker-button {background: ${verseText.eraseColor}}`;
+      var head = document.querySelector('head');
+      head.appendChild(style);
     }
   });
 };
 
-window.onload = getStoredText();
+
+window.onload = getSaveState();
 
 function listenSaveState(){
   console.log('Listening to save state.')
