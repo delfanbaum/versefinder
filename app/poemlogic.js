@@ -42,7 +42,7 @@ function addLineBreak(lineBreakID) {
 
 function textToErasable(text, groupNumber){ // where 'text' is a string
   var erasableText = '';
-  if (document.querySelector('#punctuationSeperator').checked = true){
+  if (document.querySelector('#punctuationSeperator').checked === true){
     console.log('separate punctuation!');
     text = separatePunctuation(text);
   }
