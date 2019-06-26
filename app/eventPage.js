@@ -34,7 +34,7 @@ function updateText(selectionText, selectionSourceUrl){
   chrome.storage.local.get('text', function(verseText){
     var newText = '';
 
-    if (verseText){
+    if (verseText.text != undefined){
       newText += String(verseText.text);
     };
 

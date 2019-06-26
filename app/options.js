@@ -3,6 +3,10 @@
 function getSaveState(){
   chrome.storage.local.get(['text', 'poem', 'eraseColor', 'textColor'],function(verseText){
     var textField = document.getElementById('verseTextField');
+
+    if (verseText.text === undefined){ // first case
+      textField.innerHTML = `<p>Add text from the web to get started.</p>`
+    } else {
     if (verseText.poem != ' ') {
       textField.innerHTML = verseText.poem;
       addListeners(textField);
@@ -29,6 +33,7 @@ function getSaveState(){
       var head = document.querySelector('head');
       head.appendChild(sa);
     }
+  }
   });
   // wait
   setTimeout(function(){
