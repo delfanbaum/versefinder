@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="jquery-3.4.1.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/huebee.min.css" media="screen">
@@ -24,35 +23,45 @@
 
     </div>
       <div id="extensionActions">
-        <div class="options none">
-          <h2>Poem Options</h2>
-          <div id="colorPicker">
-              <button class="color-input color-picker-button"> &nbsp;</button>
-              <span>Erase/Highlight Color</span>
-          </div>
-          <div id="textColorPicker">
-              <button class="color-input text-picker-button"> &nbsp;</button>
-              <span>Erased Text Color</span>
-          </div>
-          <div>
-              <input type="checkbox" id="punctuationSeperator" value="">
-              <span>Separate Punctuation</span>
-          </div>
-          <div>
-              <input type="checkbox" id="punctuationRemover" value="">
-              <span>Remove Punctuation</span>
-          </div>
-          <div class="">
-              <input type="checkbox" id="lowercaseToggle" value="">
-              <span>Lowercase Text</span>
-          </div>
-        </div>
-        <ul>
+        <ul class="actionButtons">
           <li id="go" class="action">Start</li>
           <li id="share" class="action">Share</li>
           <li id="resetPoem" class="action">Reset</li>
           <li id="resetStorage" class="action">Clear Text</li>
         </ul>
+        <ul class="options">
+          <h2>Poem Options</h2>
+          <li id="colorPicker">
+              <button class="color-input color-picker-button"> &nbsp;</button>
+              <span>Erase/Highlight Color</span>
+          </li>
+          <li id="textColorPicker">
+              <button class="color-input text-picker-button"> &nbsp;</button>
+              <span>Erased Text Color</span>
+          </li>
+          <li>
+          <label class="checkboxContainer">
+            <span class="labelText">Separate Punctuation</span>
+              <input type="checkbox" id="punctuationSeperator">
+              <span class="checkmark"></span>
+          </label>
+        </li>
+        <li>
+          <label class="checkboxContainer">
+              <input type="checkbox" id="punctuationRemover" value="">
+              <span class="labelText">Remove Punctuation</span>
+              <span class="checkmark"></span>
+          </label>
+        </li>
+        <li>
+          <label class="checkboxContainer">
+              <input type="checkbox" id="lowercaseToggle" value="">
+              <span class="labelText">Lowercase Text</span>
+              <span class="checkmark"></span>
+          </label>
+        </li>
+        </ul>
+
       </div>
       <script src="huebee.pkgd.min.js"></script>
       <script src="html2canvas.min.js"></script>
